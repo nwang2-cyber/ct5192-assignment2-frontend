@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Verify frontend files
         run: |
@@ -20,3 +22,13 @@ jobs:
           test -f index.html
           test -f style.css
           test -f script.js
+
+      - name: SonarQube Cloud Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=nwang2-cyber
+            -Dsonar.projectKey=nwang2-cyber_ct5192-assignment2-frontend
+            -Dsonar.sources=.
