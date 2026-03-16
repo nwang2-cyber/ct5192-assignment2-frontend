@@ -22,12 +22,18 @@ jobs:
           test -f index.html
           test -f style.css
           test -f script.js
+          test -f package.json
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
 
       - name: Set up Snyk
         uses: snyk/actions/setup@master
 
       - name: Run Snyk to check for vulnerabilities
-        run: snyk test
+        run: snyk test --file=package.json --package-manager=npm
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
