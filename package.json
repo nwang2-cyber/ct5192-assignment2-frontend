@@ -1,0 +1,10 @@
+{
+  "name": "ct5192-assignment2-frontend",
+  "version": "1.0.0",
+  "description": "Static frontend for CT5192 Assignment 2",
+  "main": "script.js",
+  "scripts": {
+    "start": "echo static frontend"
+  },
+  "dependencies": {}
+}
